@@ -58,7 +58,7 @@ plugins:
   youtube:
     enabled: true
     oauth:
-      refreshToken: "1//04Nj29NG1pA8gCgYIARAAGAQSNwF-L9Iri9xktNu1u4DQAt4epWE4AXdFBQ2bjdX0qcVAV8__TqxbHv-Fibd9L-ztBs311Tf0vCw"      
+      refreshToken: ${GOOGLE_REFRESH_TOKEN}      
     clients:
       - TV
       - TVHTML5EMBEDDED
