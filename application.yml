@@ -1,0 +1,88 @@
+server:
+  address: "::"
+  port: 2333
+  http2:
+    enabled: true
+
+lavalink:
+  plugins:
+    - dependency: dev.lavalink.youtube:youtube-plugin:755aab35029153a705ebd4be63c56a55d68ae678
+      snapshot: true
+    - dependency: com.github.topi314.lavasrc:lavasrc-plugin:4.8.1
+      snapshot: false
+  pluginsDir: ./plugins
+  server:
+    password: ${LAVALINK_SERVER_PASSWORD}
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 10
+    resamplingQuality: MEDIUM
+    trackStuckThresholdMs: 90000
+    useSeekGhosting: true
+    youtubePlaylistLoadLimit: 6
+    youtubeSearchEnabled: true
+    sources:
+      youtube: false
+      bandcamp: false
+      soundcloud: false
+      twitch: false
+      vimeo: false
+      http: true
+      local: false
+
+plugins:
+  lavasrc:
+    providers:
+      - "ytsearch:%ISRC%"
+      - "ytsearch:%QUERY%"
+    sources:
+      spotify: true
+      applemusic: true
+      deezer: true
+      yandexmusic: false
+      flowerytts: false
+      youtube: false
+    spotify:
+      clientId: ${SPOTIFY_CLIENT_ID}
+      clientSecret: ${SPOTIFY_CLIENT_SECRET}
+      countryCode: "CO"
+      playlistLoadLimit: 6
+      albumLoadLimit: 6
+    applemusic:
+      countryCode: "CO"
+      playlistLoadLimit: 6
+      albumLoadLimit: 6
+    deezer:
+      masterDecryptionKey: ${DEEZER_MASTER_KEY}
+      arl: ${DEEZER_ARL}
+
+  youtube:
+    enabled: true
+    oauth:
+      # el refresh token debe venir de una variable de entorno
+      refreshToken: ${GOOGLE_REFRESH_TOKEN}
+    clients:
+      - TV
+      - TVHTML5EMBEDDED
+      - MWEB
+      - WEB
+      - WEBEMBEDDED
+      - MUSIC
+      - ANDROID_VR
+      - IOS
+    clientOptions:
+      TVHTML5EMBEDDED:
+        playback: true
+        playlistLoading: true
+        searching: true
+        videoLoading: true
+      WEB:
+        playback: false
+        playlistLoading: true
+        searching: true
+        videoLoading: true
+      MUSIC:
+        playback: true
+        playlistLoading: true
+        searching: true
+        videoLoading: true
