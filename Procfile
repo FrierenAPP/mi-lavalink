@@ -1,1 +1,1 @@
-worker: sh start.sh
+worker: java -jar Lavalink.jar
